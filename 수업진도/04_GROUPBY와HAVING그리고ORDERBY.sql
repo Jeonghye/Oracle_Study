@@ -1,17 +1,17 @@
--- GROUP BY¿Í HAVING ±×¸®°í ORDER BY
+-- GROUP BYì™€ HAVING ê·¸ë¦¬ê³  ORDER BY
 
 /*
-5: SELECT ÄÃ·³¸í AS º°Äª, °è»ê½Ä, ÇÔ¼ö½Ä
-1: FROM ÂüÁ¶ÇÒ Å×ÀÌºí¸í
-2: WHERE ÇàÀ» ½Äº°ÇÏ±â À§ÇÑ Á¶°Ç½Ä
-3: GROUP BY ±×·ìÀ» ¹­À» ÄÃ·³¸í
-4: HAVING ±×·ìÀ» ½Äº°ÇÏ±â À§ÇÑ Á¶°Ç½Ä
-6: ORDER BY ÄÃ·³¸í | º°Äª | ÄÃ·³¼ø¹ø > Á¤·Ä¹æ½Ä([ASC]|DESC) > [NULLS FIRST | LAST]
+5: SELECT ì»¬ëŸ¼ëª… AS ë³„ì¹­, ê³„ì‚°ì‹, í•¨ìˆ˜ì‹
+1: FROM ì°¸ì¡°í•  í…Œì´ë¸”ëª…
+2: WHERE í–‰ì„ ì‹ë³„í•˜ê¸° ìœ„í•œ ì¡°ê±´ì‹
+3: GROUP BY ê·¸ë£¹ì„ ë¬¶ì„ ì»¬ëŸ¼ëª…
+4: HAVING ê·¸ë£¹ì„ ì‹ë³„í•˜ê¸° ìœ„í•œ ì¡°ê±´ì‹
+6: ORDER BY ì»¬ëŸ¼ëª… | ë³„ì¹­ | ì»¬ëŸ¼ìˆœë²ˆ > ì •ë ¬ë°©ì‹([ASC]|DESC) > [NULLS FIRST | LAST]
 */
 
 SELECT
-       COUNT(*) »ç¿ø¼ö
-     , DEPT_CODE Á÷±ÞÄÚµå
+       COUNT(*) ì‚¬ì›ìˆ˜
+     , DEPT_CODE ì§ê¸‰ì½”ë“œ
   FROM EMPLOYEE
  GROUP BY DEPT_CODE;
  
@@ -25,20 +25,20 @@ SELECT
         , JOB_CODE
  ORDER BY 1;
  
--- Á÷¿ø Å×ÀÌºí¿¡¼­ ºÎ¼­ÄÚµåº° ±×·ìÀ» ÁöÁ¤ÇÏ¿©
--- ºÎ¼­ÄÚµå, ±×·ìº° ±Þ¿©ÀÇ ÇÕ°è, ±×·ìº° ±Þ¿©ÀÇ Æò±Õ, ÀÎ¿ø¼ö¸¦ Á¶È¸ÇÏ°í
--- ºÎ¼­ÄÚµå ¼øÀ¸·Î ¿À¸§Â÷¼ø Á¤·ÄÇÏ¼¼¿ä
+-- ì§ì› í…Œì´ë¸”ì—ì„œ ë¶€ì„œì½”ë“œë³„ ê·¸ë£¹ì„ ì§€ì •í•˜ì—¬
+-- ë¶€ì„œì½”ë“œ, ê·¸ë£¹ë³„ ê¸‰ì—¬ì˜ í•©ê³„, ê·¸ë£¹ë³„ ê¸‰ì—¬ì˜ í‰ê· , ì¸ì›ìˆ˜ë¥¼ ì¡°íšŒí•˜ê³ 
+-- ë¶€ì„œì½”ë“œ ìˆœìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬í•˜ì„¸ìš”
 SELECT
        DEPT_CODE
-     , SUM(SALARY) ÇÕ°è
-     , AVG(SALARY) Æò±Õ
-     , COUNT(*) ÀÎ¿ø¼ö
+     , SUM(SALARY) í•©ê³„
+     , AVG(SALARY) í‰ê· 
+     , COUNT(*) ì¸ì›ìˆ˜
   FROM EMPLOYEE
  GROUP BY DEPT_CODE
  ORDER BY 1;
  
--- Á÷¿ø Å×ÀÌºí¿¡¼­ Á÷±ÞÄÚµå, º¸³Ê½º¸¦ ¹Þ´Â »ç¿ø¼ö¸¦ Á¶È¸ÇÏ¿©
--- Á÷±ÞÄÚµå ¼øÀ¸·Î ¿À¸§Â÷¼ø Á¤·ÄÇÏ¼¼¿ä
+-- ì§ì› í…Œì´ë¸”ì—ì„œ ì§ê¸‰ì½”ë“œ, ë³´ë„ˆìŠ¤ë¥¼ ë°›ëŠ” ì‚¬ì›ìˆ˜ë¥¼ ì¡°íšŒí•˜ì—¬
+-- ì§ê¸‰ì½”ë“œ ìˆœìœ¼ë¡œ ì˜¤ë¦„ì°¨ìˆœ ì •ë ¬í•˜ì„¸ìš”
 SELECT
        JOB_CODE
      , COUNT(BONUS)
@@ -47,40 +47,40 @@ SELECT
  GROUP BY JOB_CODE
  ORDER BY 1;
  
--- Á÷¿ø Å×ÀÌºí¿¡¼­ ÁÖ¹Î¹øÈ£ÀÇ ¿©´ü¹øÂ° ÀÚ¸®¸¦ Á¶È¸ÇÏ¿©
--- 1ÀÌ¸é ³², 2ÀÌ¸é ¿©·Î °á°ú Á¶È¸ÇÏ°í
--- ¼ºº°º° ±Þ¿© Æò±Õ(Á¤¼öÃ³¸®), ±Þ¿© ÇÕ°è, ÀÎ¿ø¼ö¸¦ Á¶È¸ÇÑ µÚ
--- ÀÎ¿ø¼ö·Î ³»¸²Â÷¼ø Á¤·ÄÇÏ¼¼¿ä
+-- ì§ì› í…Œì´ë¸”ì—ì„œ ì£¼ë¯¼ë²ˆí˜¸ì˜ ì—¬ëŸë²ˆì§¸ ìžë¦¬ë¥¼ ì¡°íšŒí•˜ì—¬
+-- 1ì´ë©´ ë‚¨, 2ì´ë©´ ì—¬ë¡œ ê²°ê³¼ ì¡°íšŒí•˜ê³ 
+-- ì„±ë³„ë³„ ê¸‰ì—¬ í‰ê· (ì •ìˆ˜ì²˜ë¦¬), ê¸‰ì—¬ í•©ê³„, ì¸ì›ìˆ˜ë¥¼ ì¡°íšŒí•œ ë’¤
+-- ì¸ì›ìˆ˜ë¡œ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬í•˜ì„¸ìš”
 SELECT
-       DECODE(SUBSTR(EMP_NO, 8, 1), '1', '³²', '2', '¿©') AS ¼ºº°
-     , FLOOR(AVG(SALARY)) Æò±Õ
-     , SUM(SALARY) ÇÕ°è
-     , COUNT(*) ÀÎ¿ø¼ö
+       DECODE(SUBSTR(EMP_NO, 8, 1), '1', 'ë‚¨', '2', 'ì—¬') AS ì„±ë³„
+     , FLOOR(AVG(SALARY)) í‰ê· 
+     , SUM(SALARY) í•©ê³„
+     , COUNT(*) ì¸ì›ìˆ˜
   FROM EMPLOYEE
- GROUP BY DECODE(SUBSTR(EMP_NO, 8, 1), '1', '³²', '2', '¿©')
- ORDER BY ÀÎ¿ø¼ö DESC;
+ GROUP BY DECODE(SUBSTR(EMP_NO, 8, 1), '1', 'ë‚¨', '2', 'ì—¬')
+ ORDER BY ì¸ì›ìˆ˜ DESC;
 
--- HAVING : ±×·ì¿¡ ´ëÇÑ Á¶°ÇÀ» ¼³Á¤ÇÒ ¶§ »ç¿ëÇÑ´Ù.
--- Æò±Õ ±Þ¿©¸¦ 300¸¸¿øÀ» ÃÊ°úÇØ¼­ ¹Þ´Â ºÎ¼­ÀÇ ºÎ¼­ÄÚµå¿Í ±Þ¿© Æò±Õ Á¶È¸
+-- HAVING : ê·¸ë£¹ì— ëŒ€í•œ ì¡°ê±´ì„ ì„¤ì •í•  ë•Œ ì‚¬ìš©í•œë‹¤.
+-- í‰ê·  ê¸‰ì—¬ë¥¼ 300ë§Œì›ì„ ì´ˆê³¼í•´ì„œ ë°›ëŠ” ë¶€ì„œì˜ ë¶€ì„œì½”ë“œì™€ ê¸‰ì—¬ í‰ê·  ì¡°íšŒ
 SELECT
        DEPT_CODE
-     , FLOOR(AVG(SALARY)) Æò±Õ
+     , FLOOR(AVG(SALARY)) í‰ê· 
   FROM EMPLOYEE
  GROUP BY DEPT_CODE
 HAVING FLOOR(AVG(SALARY)) > 3000000
  ORDER BY 1;
 
 
--- ±Þ¿©¸¦ 300¸¸¿øÀ» ÃÊ°úÇØ¼­ ¹Þ´Â Á÷¿øµéÀÇ ºÎ¼­º° ºÎ¼­ÄÚµå¿Í ±Þ¿© Æò±Õ Á¶È¸
+-- ê¸‰ì—¬ë¥¼ 300ë§Œì›ì„ ì´ˆê³¼í•´ì„œ ë°›ëŠ” ì§ì›ë“¤ì˜ ë¶€ì„œë³„ ë¶€ì„œì½”ë“œì™€ ê¸‰ì—¬ í‰ê·  ì¡°íšŒ
 SELECT
        DEPT_CODE
-     , FLOOR(AVG(SALARY)) Æò±Õ
+     , FLOOR(AVG(SALARY)) í‰ê· 
   FROM EMPLOYEE
  WHERE SALARY > 3000000
  GROUP BY DEPT_CODE
  ORDER BY 1;
  
--- ºÎ¼­º° ±×·ìÀÇ ±Þ¿© ÇÕ°è°¡ 9¹é¸¸¿ø ÃÊ°úÇÏ´Â ºÎ¼­ÀÇ ºÎ¼­ÄÚµå¿Í ±Þ¿© ÇÕ°è Á¶È¸
+-- ë¶€ì„œë³„ ê·¸ë£¹ì˜ ê¸‰ì—¬ í•©ê³„ê°€ 9ë°±ë§Œì› ì´ˆê³¼í•˜ëŠ” ë¶€ì„œì˜ ë¶€ì„œì½”ë“œì™€ ê¸‰ì—¬ í•©ê³„ ì¡°íšŒ
 SELECT
        DEPT_CODE
      , SUM(SALARY)
@@ -88,7 +88,7 @@ SELECT
  GROUP BY DEPT_CODE
 HAVING SUM(SALARY) > 9000000;
 
--- ±Þ¿© ÇÕ°è°¡ °¡Àå ¸¹Àº ºÎ¼­ÀÇ ºÎ¼­ÄÚµå¿Í ±Þ¿© ÇÕ°è¸¦ ±¸ÇÏ¼¼¿ä
+-- ê¸‰ì—¬ í•©ê³„ê°€ ê°€ìž¥ ë§Žì€ ë¶€ì„œì˜ ë¶€ì„œì½”ë“œì™€ ê¸‰ì—¬ í•©ê³„ë¥¼ êµ¬í•˜ì„¸ìš”
 SELECT
        MAX(SUM(SALARY))
   FROM EMPLOYEE
@@ -111,8 +111,8 @@ HAVING SUM(SALARY) = (SELECT MAX(SUM(SALARY))
                        GROUP BY DEPT_CODE
                       );
                       
--- Áý°èÇÔ¼ö
--- ROLLUP ÇÔ¼ö : ±×·ìº°·Î Áß°£ Áý°è Ã³¸®¸¦ ÇÏ´Â ÇÔ¼ö·Î GROUP BY Àý¿¡¼­¸¸ »ç¿ëÇÑ´Ù.
+-- ì§‘ê³„í•¨ìˆ˜
+-- ROLLUP í•¨ìˆ˜ : ê·¸ë£¹ë³„ë¡œ ì¤‘ê°„ ì§‘ê³„ ì²˜ë¦¬ë¥¼ í•˜ëŠ” í•¨ìˆ˜ë¡œ GROUP BY ì ˆì—ì„œë§Œ ì‚¬ìš©í•œë‹¤.
 SELECT
        JOB_CODE
      , SUM(SALARY)
@@ -120,7 +120,7 @@ SELECT
  GROUP BY ROLLUP(JOB_CODE)
  ORDER BY 1;
 
--- CUBE ÇÔ¼ö : ±×·ìº° »êÃâÇÑ °á°ú¸¦ Áý°èÇÑ ÇÔ¼öÀÌ´Ù. ROLLUP°ú ºñ½ÁÇÏ°Ô »ç¿ëÇÑ´Ù.
+-- CUBE í•¨ìˆ˜ : ê·¸ë£¹ë³„ ì‚°ì¶œí•œ ê²°ê³¼ë¥¼ ì§‘ê³„í•œ í•¨ìˆ˜ì´ë‹¤. ROLLUPê³¼ ë¹„ìŠ·í•˜ê²Œ ì‚¬ìš©í•œë‹¤.
 SELECT
        JOB_CODE
      , SUM(SALARY)
@@ -144,14 +144,14 @@ SELECT
  GROUP BY CUBE(DEPT_CODE, JOB_CODE)
  ORDER BY 1;
  
--- GROUPING ÇÔ¼ö : ROLLUPÀÌ³ª CUBE¿¡ ÀÇÇÑ »êÃâ¹°ÀÌ
--- ÀÎÀÚ·Î Àü´Þ¹ÞÀº ÄÃ·³ ÁýÇÕÀÇ »êÃâ¹°ÀÌ¸é 0À¸·Î ¹ÝÈ¯, ¾Æ´Ï¸é 1·Î ¹ÝÈ¯ÇÏ´Â ÇÔ¼ö
+-- GROUPING í•¨ìˆ˜ : ROLLUPì´ë‚˜ CUBEì— ì˜í•œ ì‚°ì¶œë¬¼ì´
+-- ì¸ìžë¡œ ì „ë‹¬ë°›ì€ ì»¬ëŸ¼ ì§‘í•©ì˜ ì‚°ì¶œë¬¼ì´ë©´ 0ìœ¼ë¡œ ë°˜í™˜, ì•„ë‹ˆë©´ 1ë¡œ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜
 SELECT
        DEPT_CODE
      , JOB_CODE
      , SUM(SALARY)
-     , GROUPING(DEPT_CODE) "ºÎ¼­º°±×·ì¹­ÀÎ»óÅÂ"
-     , GROUPING(JOB_CODE) Á÷±Þº°±×·ì¹­ÀÎ»óÅÂ
+     , GROUPING(DEPT_CODE) "ë¶€ì„œë³„ê·¸ë£¹ë¬¶ì¸ìƒíƒœ"
+     , GROUPING(JOB_CODE) ì§ê¸‰ë³„ê·¸ë£¹ë¬¶ì¸ìƒíƒœ
   FROM EMPLOYEE
  GROUP BY CUBE(DEPT_CODE, JOB_CODE)
  ORDER BY DEPT_CODE;
@@ -161,21 +161,21 @@ SELECT
      , JOB_CODE
      , SUM(SALARY)
      , CASE
-         WHEN GROUPING(DEPT_CODE) = 0 AND GROUPING(JOB_CODE) = 1 THEN 'ºÎ¼­º°ÇÕ°è'
-         WHEN GROUPING(DEPT_CODE) = 1 AND GROUPING(JOB_CODE) = 0 THEN 'Á÷±Þº°ÇÕ°è'
-         WHEN GROUPING(DEPT_CODE) = 0 AND GROUPING(JOB_CODE) = 0 THEN 'ºÎ¼­Á÷±Þº°ÇÕ°è'
-         ELSE 'ÃÑÇÕ°è'
-       END AS ±¸ºÐ
+         WHEN GROUPING(DEPT_CODE) = 0 AND GROUPING(JOB_CODE) = 1 THEN 'ë¶€ì„œë³„í•©ê³„'
+         WHEN GROUPING(DEPT_CODE) = 1 AND GROUPING(JOB_CODE) = 0 THEN 'ì§ê¸‰ë³„í•©ê³„'
+         WHEN GROUPING(DEPT_CODE) = 0 AND GROUPING(JOB_CODE) = 0 THEN 'ë¶€ì„œì§ê¸‰ë³„í•©ê³„'
+         ELSE 'ì´í•©ê³„'
+       END AS êµ¬ë¶„
   FROM EMPLOYEE
  GROUP BY CUBE(DEPT_CODE, JOB_CODE)
  ORDER BY 1;
  
--- SET OPERATION(ÁýÇÕ¿¬»ê)
--- UNION : ¿©·¯ °³ÀÇ Äõ¸® °á°ú¸¦ ÇÏ³ª·Î ÇÕÄ¡´Â ¿¬»êÀÚ
---         Áßº¹µÈ ¿µ¿ªÀ» Á¦¿ÜÇÏ¿© ÇÏ³ª·Î ÇÕÄ£´Ù.
--- ÇàÀÇ ¼ö°¡ °°¾Æ¾ß ÇÑ´Ù.
+-- SET OPERATION(ì§‘í•©ì—°ì‚°)
+-- UNION : ì—¬ëŸ¬ ê°œì˜ ì¿¼ë¦¬ ê²°ê³¼ë¥¼ í•˜ë‚˜ë¡œ í•©ì¹˜ëŠ” ì—°ì‚°ìž
+--         ì¤‘ë³µëœ ì˜ì—­ì„ ì œì™¸í•˜ì—¬ í•˜ë‚˜ë¡œ í•©ì¹œë‹¤.
+-- í–‰ì˜ ìˆ˜ê°€ ê°™ì•„ì•¼ í•œë‹¤.
 
-SELECT /* È£Ãâ ÇÔ¼öÀÇ Á¤º¸*/
+SELECT /* í˜¸ì¶œ í•¨ìˆ˜ì˜ ì •ë³´*/
        EMP_ID
      , EMP_NAME
      , DEPT_CODE
@@ -190,9 +190,9 @@ SELECT EMP_ID
   FROM EMPLOYEE
  WHERE SALARY > 3000000;
  
--- UNION ALL : ¿©·¯ °³ÀÇ Äõ¸® °á°ú¸¦ ÇÏ³ª·Î ÇÕÄ¡´Â ¿¬»êÀÚ
---             UNION°ú ´Ù¸£°Ô Áßº¹ ¿µ¿ªÀ» ¸ðµÎ Æ÷ÇÔÇÑ´Ù.
-SELECT /* È£Ãâ ÇÔ¼öÀÇ Á¤º¸*/
+-- UNION ALL : ì—¬ëŸ¬ ê°œì˜ ì¿¼ë¦¬ ê²°ê³¼ë¥¼ í•˜ë‚˜ë¡œ í•©ì¹˜ëŠ” ì—°ì‚°ìž
+--             UNIONê³¼ ë‹¤ë¥´ê²Œ ì¤‘ë³µ ì˜ì—­ì„ ëª¨ë‘ í¬í•¨í•œë‹¤.
+SELECT /* í˜¸ì¶œ í•¨ìˆ˜ì˜ ì •ë³´*/
        EMP_ID
      , EMP_NAME
      , DEPT_CODE
@@ -207,7 +207,7 @@ SELECT EMP_ID
   FROM EMPLOYEE
  WHERE SALARY > 3000000;
  
--- INTERSECT : ¿©·¯ °³ÀÇ SELECTÇÑ °á°ú¿¡¼­ °øÅë ºÎºÐ¸¸ °á°ú·Î ÃßÃâ (±³ÁýÇÕ)
+-- INTERSECT : ì—¬ëŸ¬ ê°œì˜ SELECTí•œ ê²°ê³¼ì—ì„œ ê³µí†µ ë¶€ë¶„ë§Œ ê²°ê³¼ë¡œ ì¶”ì¶œ (êµì§‘í•©)
 SELECT 
        EMP_ID
      , EMP_NAME
@@ -223,7 +223,7 @@ SELECT EMP_ID
   FROM EMPLOYEE
  WHERE SALARY > 3000000;
  
--- MINUS : ¼±Çà SELECT °á°ú¿¡¼­ ÈÄÇà SELECT °á°ú¿Í °ãÄ¡´Â ºÎºÐÀ» Á¦¿ÜÇÑ ³ª¸ÓÁö¸¸ ÃßÃâ (Â÷ÁýÇÕ)
+-- MINUS : ì„ í–‰ SELECT ê²°ê³¼ì—ì„œ í›„í–‰ SELECT ê²°ê³¼ì™€ ê²¹ì¹˜ëŠ” ë¶€ë¶„ì„ ì œì™¸í•œ ë‚˜ë¨¸ì§€ë§Œ ì¶”ì¶œ (ì°¨ì§‘í•©)
 SELECT 
        EMP_ID
      , EMP_NAME

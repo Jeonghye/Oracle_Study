@@ -1,11 +1,11 @@
--- Á¶ÀÎ(JOIN)
--- JOIN : µÎ °³ÀÇ Å×ÀÌºíÀ» ÇÏ³ª·Î ÇÕÃÄ¼­ °á°ú¸¦ Á¶È¸ÇÑ´Ù.
+-- ì¡°ì¸(JOIN)
+-- JOIN : ë‘ ê°œì˜ í…Œì´ë¸”ì„ í•˜ë‚˜ë¡œ í•©ì³ì„œ ê²°ê³¼ë¥¼ ì¡°íšŒí•œë‹¤.
 
--- ¿À¶óÅ¬ Àü¿ë ±¸¹®
--- FROMÀý¿¡ ',' ÄÞ¸¶·Î ±¸ºÐÇÏ¿© »ç¿ëÇÒ Å×ÀÌºíÀ» ´Ù ±â¼úÇÑ´Ù.
--- WHEREÀý¿¡ ÇÕÄ¡±â¿¡ »ç¿ëÇÒ ÄÃ·³À» ÀÌ¿ëÇØ Á¶°ÇÀ» ±â¼úÇÑ´Ù.
+-- ì˜¤ë¼í´ ì „ìš© êµ¬ë¬¸
+-- FROMì ˆì— ',' ì½¤ë§ˆë¡œ êµ¬ë¶„í•˜ì—¬ ì‚¬ìš©í•  í…Œì´ë¸”ì„ ë‹¤ ê¸°ìˆ í•œë‹¤.
+-- WHEREì ˆì— í•©ì¹˜ê¸°ì— ì‚¬ìš©í•  ì»¬ëŸ¼ì„ ì´ìš©í•´ ì¡°ê±´ì„ ê¸°ìˆ í•œë‹¤.
 
--- ¿¬°á¿¡ »ç¿ëÇÒ µÎ ÄÃ·³¸íÀÌ ´Ù¸¥ °æ¿ì
+-- ì—°ê²°ì— ì‚¬ìš©í•  ë‘ ì»¬ëŸ¼ëª…ì´ ë‹¤ë¥¸ ê²½ìš°
 SELECT
        EMP_ID
      , EMP_NAME
@@ -15,7 +15,7 @@ SELECT
      , DEPARTMENT
  WHERE DEPT_CODE = DEPT_ID;
  
--- ¿¬°á¿¡ »ç¿ëÇÒ µÎ ÄÃ·³¸íÀÌ °°Àº °æ¿ì
+-- ì—°ê²°ì— ì‚¬ìš©í•  ë‘ ì»¬ëŸ¼ëª…ì´ ê°™ì€ ê²½ìš°
 SELECT
        EMPYOLEE.EMP_ID
      , EMPLOYEE.EMP_NAME
@@ -25,7 +25,7 @@ SELECT
      , JOB
  WHERE EMPLOYEE.JOB_CODE = JOB.JOB_CODE;
 
--- Å×ÀÌºí¿¡ º°Äª ÀÌ¿ë
+-- í…Œì´ë¸”ì— ë³„ì¹­ ì´ìš©
 SELECT
        E.EMP_ID
      , E.EMP_NAME
@@ -36,8 +36,8 @@ SELECT
  WHERE E.JOB_CODE = J.JOB_CODE;
 
 
--- ANSI Ç¥ÁØ ±¸¹®
--- ¿¬°á¿¡ »ç¿ëÇÒ ÄÃ·³¸íÀÌ °°Àº °æ¿ì USING(ÄÃ·³¸í)
+-- ANSI í‘œì¤€ êµ¬ë¬¸
+-- ì—°ê²°ì— ì‚¬ìš©í•  ì»¬ëŸ¼ëª…ì´ ê°™ì€ ê²½ìš° USING(ì»¬ëŸ¼ëª…)
 SELECT
        EMP_ID
      , EMP_NAME
@@ -46,7 +46,7 @@ SELECT
   FROM EMPLOYEE
   JOIN JOB USING(JOB_CODE);
 
--- ¿¬°á¿¡ »ç¿ëÇÒ ÄÃ·³¸íÀÌ ´Ù¸¥ °æ¿ì ON()À» »ç¿ë
+-- ì—°ê²°ì— ì‚¬ìš©í•  ì»¬ëŸ¼ëª…ì´ ë‹¤ë¥¸ ê²½ìš° ON()ì„ ì‚¬ìš©
 SELECT
        EMP_ID
      , EMP_NAME
@@ -55,7 +55,7 @@ SELECT
   FROM EMPLOYEE
   JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID);
   
--- ÄÃ·³¸íÀÌ °°Àº °æ¿ì¿¡µµ ON()À» »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+-- ì»¬ëŸ¼ëª…ì´ ê°™ì€ ê²½ìš°ì—ë„ ON()ì„ ì‚¬ìš©í•  ìˆ˜ ìžˆë‹¤.
 SELECT
        E.EMP_ID
      , E.EMP_NAME
@@ -64,14 +64,14 @@ SELECT
   FROM EMPLOYEE E
   JOIN JOB J ON(E.JOB_CODE = J.JOB_CODE);
 
--- ºÎ¼­ Å×ÀÌºí°ú Áö¿ª Å×ÀÌºíÀ» Á¶ÀÎÇÏ¿© Å×ÀÌºíÀÇ ¸ðµç µ¥ÀÌÅÍ¸¦ Á¶È¸ÇÏ¼¼¿ä
--- ANSI Ç¥ÁØ
+-- ë¶€ì„œ í…Œì´ë¸”ê³¼ ì§€ì—­ í…Œì´ë¸”ì„ ì¡°ì¸í•˜ì—¬ í…Œì´ë¸”ì˜ ëª¨ë“  ë°ì´í„°ë¥¼ ì¡°íšŒí•˜ì„¸ìš”
+-- ANSI í‘œì¤€
 SELECT
        *
   FROM DEPARTMENT D
   JOIN LOCATION L ON(D.LOCATION_ID = L.LOCAL_CODE);
 
--- ¿À¶óÅ¬ Àü¿ë
+-- ì˜¤ë¼í´ ì „ìš©
 SELECT
        D.*
      , L.*
@@ -79,17 +79,17 @@ SELECT
      , LOCATION L
  WHERE D.LOCATION_ID = L.LOCAL_CODE;
  
--- Á¶ÀÎÀÇ ±âº»ÀÌ EQUAL JOINÀÌ´Ù. (= EQU JOIN) (µî°¡Á¶ÀÎ)
--- ÀÏÄ¡ÇÏ´Â °ªÀÌ ¾ø´Â ÇàÀº Á¶ÀÎ¿¡¼­ Á¦¿ÜÇÏ´Â °ÍÀ» INNER JOIN (NULL°ªÀº Á¶ÀÎ¿¡¼­ Á¦¿Ü)
+-- ì¡°ì¸ì˜ ê¸°ë³¸ì´ EQUAL JOINì´ë‹¤. (= EQU JOIN) (ë“±ê°€ì¡°ì¸)
+-- ì¼ì¹˜í•˜ëŠ” ê°’ì´ ì—†ëŠ” í–‰ì€ ì¡°ì¸ì—ì„œ ì œì™¸í•˜ëŠ” ê²ƒì„ INNER JOIN (NULLê°’ì€ ì¡°ì¸ì—ì„œ ì œì™¸)
 
--- JOINÀÇ ±âº»Àº INNER JOIN & EQUAL JOINÀÌ´Ù.
+-- JOINì˜ ê¸°ë³¸ì€ INNER JOIN & EQUAL JOINì´ë‹¤.
 
--- OUTER JOIN : µÎ Å×ÀÌºíÀÇ ÁöÁ¤ÇÏ´Â ÄÃ·³ °ªÀÌ ÀÏÄ¡ÇÏ´Â Çà ¶ÇÇÑ(NULL°ªÀ» °¡Áø Çà)
---              Á¶ÀÎ °á°ú¿¡ Æ÷ÇÔ½ÃÅ´
---              OUTER JOINÀÓÀ» ¸í½ÃÇØ¾ß ÇÑ´Ù.
--- 1. LEFT OUTER JOIN : ÇÕÄ¡±â¿¡ »ç¿ëÇÑ µÎ Å×ÀÌºí Áß ¿ÞÆí¿¡ ±â¼úµÈ Å×ÀÌºíÀÇ ÇàÀÇ ¼ö ±âÁØÀ¸·Î JOIN
--- 2. RIGHT OUTER JOIN : ÇÕÄ¡±â¿¡ »ç¿ëÇÑ µÎ Å×ÀÌºí Áß ¿À¸¥Æí¿¡ ±â¼úµÈ Å×ÀÌºíÀÇ ÇàÀÇ ¼ö ±âÁØÀ¸·Î JOIN
--- 3. FULL OUTER JOIN : ÇÕÄ¡±â¿¡ »ç¿ëÇÑ µÎ Å×ÀÌºíÀÌ °¡Áø ¸ðµç ÇàÀ» °á°ú¿¡ Æ÷ÇÔ½ÃÄÑ JOIN
+-- OUTER JOIN : ë‘ í…Œì´ë¸”ì˜ ì§€ì •í•˜ëŠ” ì»¬ëŸ¼ ê°’ì´ ì¼ì¹˜í•˜ëŠ” í–‰ ë˜í•œ(NULLê°’ì„ ê°€ì§„ í–‰)
+--              ì¡°ì¸ ê²°ê³¼ì— í¬í•¨ì‹œí‚´
+--              OUTER JOINìž„ì„ ëª…ì‹œí•´ì•¼ í•œë‹¤.
+-- 1. LEFT OUTER JOIN : í•©ì¹˜ê¸°ì— ì‚¬ìš©í•œ ë‘ í…Œì´ë¸” ì¤‘ ì™¼íŽ¸ì— ê¸°ìˆ ëœ í…Œì´ë¸”ì˜ í–‰ì˜ ìˆ˜ ê¸°ì¤€ìœ¼ë¡œ JOIN
+-- 2. RIGHT OUTER JOIN : í•©ì¹˜ê¸°ì— ì‚¬ìš©í•œ ë‘ í…Œì´ë¸” ì¤‘ ì˜¤ë¥¸íŽ¸ì— ê¸°ìˆ ëœ í…Œì´ë¸”ì˜ í–‰ì˜ ìˆ˜ ê¸°ì¤€ìœ¼ë¡œ JOIN
+-- 3. FULL OUTER JOIN : í•©ì¹˜ê¸°ì— ì‚¬ìš©í•œ ë‘ í…Œì´ë¸”ì´ ê°€ì§„ ëª¨ë“  í–‰ì„ ê²°ê³¼ì— í¬í•¨ì‹œì¼œ JOIN
 SELECT
        EMP_NAME
      , DEPT_TITLE
@@ -97,24 +97,24 @@ SELECT
   JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID);
   
 -- LEFT OUTER JOIN
--- ANSI Ç¥ÁØ
+-- ANSI í‘œì¤€
 SELECT
        EMP_NAME
      , DEPT_TITLE
   FROM EMPLOYEE
   LEFT OUTER JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID);
 
--- ORACLE Àü¿ë
+-- ORACLE ì „ìš©
 SELECT
        EMP_NAME
      , DEPT_TITLE
   FROM EMPLOYEE
      , DEPARTMENT
  WHERE DEPT_CODE = DEPT_ID(+);
--- ´Ã·ÁÁÖ´Â ÂÊ¿¡ + LEFT´Â ¿À¸¥ÂÊ, RIGHT´Â ¿ÞÂÊ?
+-- ëŠ˜ë ¤ì£¼ëŠ” ìª½ì— + LEFTëŠ” ì˜¤ë¥¸ìª½, RIGHTëŠ” ì™¼ìª½?
 
 -- RIGHT OUTER JOIN
--- ANSI Ç¥ÁØ
+-- ANSI í‘œì¤€
 SELECT
        EMP_NAME
      , DEPT_TITLE
@@ -130,7 +130,7 @@ SELECT
  WHERE DEPT_CODE(+) = DEPT_ID;
  
 -- FULL OUTER JOIN
--- ANSI Ç¥ÁØ
+-- ANSI í‘œì¤€
 SELECT
        EMP_NAME
      , DEPT_TITLE
@@ -138,7 +138,7 @@ SELECT
   FULL OUTER JOIN DEPARTMENT ON(DEPT_CODE = DEPT_ID);
   
 -- ORACLE
--- ¿À¶óÅ¬ Àü¿ë ±¸¹®À¸·Î´Â FULL OUTER JOIN ÇÏÁö ¸øÇÑ´Ù.
+-- ì˜¤ë¼í´ ì „ìš© êµ¬ë¬¸ìœ¼ë¡œëŠ” FULL OUTER JOIN í•˜ì§€ ëª»í•œë‹¤.
 SELECT
        EMP_NAME
      , DEPT_TITLE
@@ -146,8 +146,8 @@ SELECT
      , DEPARTMENT
  WHERE DEPT_CODE(+) = DEPT_ID(+);
  
--- CROSS JOIN : Ä«Å×ÀÌ¼Ç°ö
---              Á¶ÀÎµÇ´Â Å×ÀÌºíÀÇ °¢ ÇàµéÀÌ ¸ðµÎ ¸ÅÇÎµÈ µ¥ÀÌÅÍ°¡ °Ë»öµÇ´Â ¹æ½Ä
+-- CROSS JOIN : ì¹´í…Œì´ì…˜ê³±
+--              ì¡°ì¸ë˜ëŠ” í…Œì´ë¸”ì˜ ê° í–‰ë“¤ì´ ëª¨ë‘ ë§¤í•‘ëœ ë°ì´í„°ê°€ ê²€ìƒ‰ë˜ëŠ” ë°©ì‹
 SELECT
        EMP_NAME
      , DEPT_TITLE
@@ -160,9 +160,9 @@ SELECT
   FROM EMPLOYEE
      , DEPARTMENT;
      
--- NON EQUAL JOIN(NON EQU JOIN - ºñµî°¡Á¶ÀÎ)
--- : ÁöÁ¤ÇÑ ÄÃ·³ÀÇ °ªÀÌ ÀÏÄ¡ÇÏ´Â °æ¿ì°¡ ¾Æ´Ñ °ªÀÇ ¹üÀ§¿¡ Æ÷ÇÔµÇ´Â ÇàµéÀ» ¿¬°áÇÏ´Â ¹æ½Ä
--- ANSI Ç¥ÁØ
+-- NON EQUAL JOIN(NON EQU JOIN - ë¹„ë“±ê°€ì¡°ì¸)
+-- : ì§€ì •í•œ ì»¬ëŸ¼ì˜ ê°’ì´ ì¼ì¹˜í•˜ëŠ” ê²½ìš°ê°€ ì•„ë‹Œ ê°’ì˜ ë²”ìœ„ì— í¬í•¨ë˜ëŠ” í–‰ë“¤ì„ ì—°ê²°í•˜ëŠ” ë°©ì‹
+-- ANSI í‘œì¤€
 SELECT
        EMP_NAME
      , SALARY
@@ -181,29 +181,29 @@ SELECT
      , SAL_GRADE S
  WHERE SALARY BETWEEN MIN_SAL AND MAX_SAL;
  
--- SELF JOIN : µ¿ÀÏÇÑ Å×ÀÌºíÀ» Á¶ÀÎÇÏ´Â °Í (ÀÚ°¡Á¶ÀÎ)
--- ANSI Ç¥ÁØ
+-- SELF JOIN : ë™ì¼í•œ í…Œì´ë¸”ì„ ì¡°ì¸í•˜ëŠ” ê²ƒ (ìžê°€ì¡°ì¸)
+-- ANSI í‘œì¤€
 SELECT
        E1.EMP_ID
-     , E1.EMP_NAME »ç¿ø¸í
+     , E1.EMP_NAME ì‚¬ì›ëª…
      , E1.DEPT_CODE
      , E1.MANAGER_ID
-     , E2.EMP_NAME °ü¸®ÀÚÀÌ¸§
+     , E2.EMP_NAME ê´€ë¦¬ìžì´ë¦„
   FROM EMPLOYEE E1
   JOIN EMPLOYEE E2 ON(E1.MANAGER_ID = E2.EMP_ID);
 
--- ¿À¶óÅ¬ Àü¿ë
+-- ì˜¤ë¼í´ ì „ìš©
 SELECT
        E1.EMP_ID
-     , E1.EMP_NAME »ç¿øÀÌ¸§
+     , E1.EMP_NAME ì‚¬ì›ì´ë¦„
      , E1.DEPT_CODE
      , E1.MANAGER_ID
-     , E2.EMP_NAME °ü¸®ÀÚÀÌ¸§
+     , E2.EMP_NAME ê´€ë¦¬ìžì´ë¦„
   FROM EMPLOYEE E1
      , EMPLOYEE E2
  WHERE E1.MANAGER_ID = E2.EMP_ID;
  
--- ´ÙÁß Á¶ÀÎ : ¿©·¯ °³ Å×ÀÌºí Á¶ÀÎ
+-- ë‹¤ì¤‘ ì¡°ì¸ : ì—¬ëŸ¬ ê°œ í…Œì´ë¸” ì¡°ì¸
 -- ANSI
 SELECT
        EMP_ID
@@ -228,33 +228,33 @@ SELECT
  WHERE DEPT_CODE = DEPT_ID
    AND LOCATION_ID = LOCAL_CODE;
    
--- Á÷±ÞÀÌ ´ë¸®¸é¼­ ¾ÆÀÌ¾Æ Áö¿ª¿¡ ±Ù¹«ÇÏ´Â Á÷¿ø Á¶È¸
--- »ç¹ø, ÀÌ¸§, Á÷±Þ¸í, ºÎ¼­¸í, ±Ù¹«Áö¿ª¸í, ±Þ¿©¸¦ Á¶È¸ÇÏ¼¼¿ä
--- (Á¶È¸ ½Ã¿¡´Â ¸ðµç ÄÃ·³¿¡ Å×ÀÌºí º°ÄªÀ» ºÙ¿©¼­ Á¶È¸ÇÑ´Ù.)
+-- ì§ê¸‰ì´ ëŒ€ë¦¬ë©´ì„œ ì•„ì´ì•„ ì§€ì—­ì— ê·¼ë¬´í•˜ëŠ” ì§ì› ì¡°íšŒ
+-- ì‚¬ë²ˆ, ì´ë¦„, ì§ê¸‰ëª…, ë¶€ì„œëª…, ê·¼ë¬´ì§€ì—­ëª…, ê¸‰ì—¬ë¥¼ ì¡°íšŒí•˜ì„¸ìš”
+-- (ì¡°íšŒ ì‹œì—ëŠ” ëª¨ë“  ì»¬ëŸ¼ì— í…Œì´ë¸” ë³„ì¹­ì„ ë¶™ì—¬ì„œ ì¡°íšŒí•œë‹¤.)
 
--- ANSI Ç¥ÁØ
+-- ANSI í‘œì¤€
 SELECT
-       E.EMP_ID »ç¹ø
-     , E.EMP_NAME ÀÌ¸§
-     , J.JOB_CODE Á÷±Þ¸í
-     , D.DEPT_TITLE ºÎ¼­¸í
-     , L.LOCAL_NAME ±Ù¹«Áö¿ª¸í
-     , E.SALARY ±Þ¿©
+       E.EMP_ID ì‚¬ë²ˆ
+     , E.EMP_NAME ì´ë¦„
+     , J.JOB_CODE ì§ê¸‰ëª…
+     , D.DEPT_TITLE ë¶€ì„œëª…
+     , L.LOCAL_NAME ê·¼ë¬´ì§€ì—­ëª…
+     , E.SALARY ê¸‰ì—¬
   FROM EMPLOYEE E
   JOIN JOB J ON(E.JOB_CODE = J.JOB_CODE)
   JOIN DEPARTMENT D ON(E.DEPT_CODE = D.DEPT_ID)
   JOIN LOCATION L ON(D.LOCATION_ID = L.LOCAL_CODE)
- WHERE J.JOB_NAME = '´ë¸®'
+ WHERE J.JOB_NAME = 'ëŒ€ë¦¬'
    AND L.LOCAL_NAME LIKE 'ASIA%';
 
--- ORACLE Àü¿ë
+-- ORACLE ì „ìš©
 SELECT
-       E.EMP_ID »ç¹ø
-     , E.EMP_NAME ÀÌ¸§
-     , J.JOB_CODE Á÷±Þ¸í
-     , D.DEPT_TITLE ºÎ¼­¸í
-     , L.LOCAL_NAME ±Ù¹«Áö¿ª¸í
-     , E.SALARY ±Þ¿©
+       E.EMP_ID ì‚¬ë²ˆ
+     , E.EMP_NAME ì´ë¦„
+     , J.JOB_CODE ì§ê¸‰ëª…
+     , D.DEPT_TITLE ë¶€ì„œëª…
+     , L.LOCAL_NAME ê·¼ë¬´ì§€ì—­ëª…
+     , E.SALARY ê¸‰ì—¬
   FROM EMPLOYEE E
      , JOB J
      , DEPARTMENT D
@@ -262,5 +262,5 @@ SELECT
  WHERE E.JOB_CODE = J.JOB_CODE
    AND E.DEPT_CODE = D.DEPT_ID
    AND D.LOCATION_ID = L.LOCAL_CODE
-   AND J.JOB_NAME = '´ë¸®'
+   AND J.JOB_NAME = 'ëŒ€ë¦¬'
    AND L.LOCAL_NAME LIKE 'ASIA%';
